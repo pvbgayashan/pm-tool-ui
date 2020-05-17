@@ -1,0 +1,161 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">Add / Edit User</div>
+      <div class="card-body">
+
+        <form [formGroup]="userFormGroup">
+
+          <div class="row">
+            <div class="col-3">
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group input-group-sm">
+                    <small><label for="userType">User Type <span class="text-danger">*</span></label></small>
+                    <select class="form-control" id="userType" formControlName="userType" (change)="onChangeUserType($event.target.value)">
+                      <option value="null">--- Select ---</option>
+                      <option>Administrator</option>
+                      <option>Supervisor</option>
+                      <option>Student</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group input-group-sm">
+                    <small><label for="idNumber">ID <span class="text-danger">*</span></label></small>
+                    <input type="text" class="form-control" id="idNumber" formControlName="userId" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group input-group-sm">
+                <small><label for="userName">User Name <span class="text-danger">*</span></label></small>
+                <input type="text" class="form-control" id="userName" formControlName="userName" />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group input-group-sm">
+                <small><label for="contactNumber">Contact Number <span class="text-danger">*</span></label></small>
+                <input type="text" class="form-control" id="contactNumber" formControlName="contactNumber" />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group input-group-sm">
+                <small><label for="designation">Designation</label></small>
+                <input type="text" class="form-control" id="designation" formControlName="designation" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <div class="form-group input-group-sm">
+                <small><label for="degreeProgram">Degree Program</label></small>
+                <select class="form-control" id="degreeProgram" formControlName="degreeProgramme">
+                  <option value="null">--- Select ---</option>
+                  <option>DP0001</option>
+                  <option>DP0002</option>
+                  <option>DP0003</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group input-group-sm">
+                    <small><label for="year">Year</label></small>
+                    <select class="form-control" id="year" formControlName="year">
+                      <option value="null">--- Select ---</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group input-group-sm">
+                    <small><label for="semester">Semester</label></small>
+                    <select class="form-control" id="semester" formControlName="semester">
+                      <option value="null">--- Select ---</option>
+                      <option>1</option>
+                      <option>2</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group input-group-sm">
+                <small><label for="subName">Subject Name</label></small>
+                <input type="text" class="form-control" id="subName" formControlName="subjectName" />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group input-group-sm">
+                <small><label for="subCode">Subject Code</label></small>
+                <input type="text" class="form-control" id="subCode" formControlName="subjectCode" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <div class="form-group input-group-sm">
+                <small><label for="email">Email <span class="text-danger">*</span></label></small>
+                <input type="email" class="form-control" id="email" formControlName="email" />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group input-group-sm">
+                <small><label for="password">Password <span class="text-danger">*</span></label></small>
+                <input type="password" class="form-control" id="password" formControlName="password" />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group input-group-sm">
+                <small><label for="confirmPassword">Confirm Password <span class="text-danger">*</span></label></small>
+                <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" />
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group input-group-sm">
+                <small><label for="status">Status <span class="text-danger">*</span></label></small>
+                <select class="form-control" id="status" formControlName="status">
+                  <option value="null">--- Select ---</option>
+                  <option>Active</option>
+                  <option>Inactive</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <button type="button" class="btn btn-dark btn-sm" (click)="clear()">Clear</button>
+              <button type="button" class="btn btn-success btn-sm ml-2" (click)="save()">
+                <span *ngIf="!isOnEdit">Save</span>
+                <span *ngIf="isOnEdit">Update</span>
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-12">
+    <ag-grid-angular
+      style="width: 100%; height: 232px;"
+      class="ag-theme-alpine"
+      [rowData]="rowData"
+      [columnDefs]="columnDefs"
+      [gridOptions]="gridOptions">
+    </ag-grid-angular>
+  </div>
+</div>

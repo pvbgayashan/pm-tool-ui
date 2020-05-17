@@ -1,0 +1,12 @@
+@import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
+@import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
+
+.ag-theme-alpine {
+  @include ag-theme-alpine();
+}
+
+.card .card-header {
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.2rem 0 0.2rem 1.2rem;
+}

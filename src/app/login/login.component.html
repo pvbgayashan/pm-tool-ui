@@ -1,0 +1,46 @@
+<div class="row" xmlns="http://www.w3.org/1999/html">
+  <div class="col-4 offset-4 mt-5">
+    <div class="card border-dark">
+      <div class="card-header bg-dark border-dark text-center text-white">User Login</div>
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group input-group-lg">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" id="email" placeholder="example@mail.com" [(ngModel)]="loginEmail" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group input-group-lg">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="**********" [(ngModel)]="loginPassword" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <button type="button" class="btn btn-success" (click)="onLogin()">LOGIN</button>
+          </div>
+        </div>
+
+        <div *ngIf="isInvalidCredentials" class="row">
+          <div class="col-12">
+            <small class="text-danger">Invalid email or password</small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <small>Forgot your password? <a href="#">Click Here</a></small>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
