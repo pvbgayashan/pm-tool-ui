@@ -59,7 +59,7 @@ export class CommentsComponent implements OnInit, OnDestroy, OnChanges {
 
   public saveComment() {
 
-    let comment: Comment = new Comment();
+    const comment: Comment = new Comment();
     comment.uploadId = this.uploadId;
     comment.addedUserId = this.loggedUser.userId;
     comment.addedUserName = this.loggedUser.userName;

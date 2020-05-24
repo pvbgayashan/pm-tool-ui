@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
         (response) => {
           if (response) {
             localStorage.setItem('logged-user', JSON.stringify(response));
+            this.commonService.setLoggedUser(response);
             this.isInvalidCredentials = false;
             this.router.navigate(['projects', {relativeTo: this.activatedRoute}]);
           } else {

@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { User } from '../dtd/user-dtd';
 import { Comment } from '../dtd/comment-dtd';
 import { LoginUser } from '../dtd/login-user-dtd';
+import { LoggedUser } from '../dtd/logged-user-dtd';
 
 @Injectable()
 export class CommonService {
@@ -24,6 +25,9 @@ export class CommonService {
   // comment
   private getCommentsByUploadIdUrl: string = environment.API.COMMENT.GET_BY_UPLOAD_ID;
   private saveCommentUrl: string = environment.API.COMMENT.SAVE;
+
+  // login
+  private loginSubject: Subject<LoggedUser> = new Subject<LoggedUser>();
 
   constructor(private httpClient: HttpClient) {}
 
@@ -68,6 +72,15 @@ export class CommonService {
 
   public saveComment(comment: Comment): Observable<any> {
     return this.httpClient.post(this.saveCommentUrl, comment);
+  }
+
+  /* login */
+  public setLoggedUser(user: LoggedUser) {
+    this.loginSubject.next(user);
+  }
+
+  public getLoggedUser(): Observable<LoggedUser> {
+    return this.loginSubject.asObservable();
   }
 
 }

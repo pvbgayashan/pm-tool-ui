@@ -19,8 +19,8 @@
       </li>
     </ul>
   </div>
-  <span class="navbar-text">
-      John Smith | <a href="#" (click)="onLogout()">Logout</a>
+  <span *ngIf="loggedUserName" class="navbar-text">
+      {{ loggedUserName }} | <a href="#" (click)="onLogout()">Logout</a>
   </span>
 </nav>
 </div>
